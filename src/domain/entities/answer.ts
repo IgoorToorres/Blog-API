@@ -1,13 +1,13 @@
-import { Entity } from "../../core/entities/entity"
+import { Entity } from '../../core/entities/entity'
 
 interface AnswerProps {
-    content: string
-    authorId: string
-    questionId: string
+  content: string
+  authorId: string
+  questionId: string
 }
 
 export class Answer extends Entity<AnswerProps> {
-    get content(){
-        return this.props.content
-    }
+  get content() {
+    return this.props.content
+  }
 }
