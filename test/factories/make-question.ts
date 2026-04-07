@@ -5,14 +5,22 @@ import {
 } from '@/domain/forum/enterprise/entities/question'
 import { Slug } from '@/domain/forum/enterprise/entities/value-objects/slug'
 
-export function makeQuestion(override: Partial<QuestionProps> = {}) {
-  const question = Question.create({
-    authorId: new UniqueEntityID(),
-    title: 'Example question',
-    slug: Slug.create('example-question'),
-    content: 'Example content',
-    ...override,
-  })
+export async function makeQuestion(
+  override: Partial<QuestionProps> = {},
+  id?: UniqueEntityID,
+) {
+  const { faker } = await import('@faker-js/faker')
+
+  const question = Question.create(
+    {
+      authorId: new UniqueEntityID(),
+      title: faker.lorem.sentence(),
+      slug: Slug.create('example-question'),
+      content: faker.lorem.text(),
+      ...override,
+    },
+    id,
+  )
 
   return question
 }
