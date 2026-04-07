@@ -1,0 +1,58 @@
+import { beforeEach, describe, expect, it } from 'vitest'
+import { InMemoryAnswersRepository } from '../../../../../test/repositories/in-memory-answers-repository'
+import { InMemoryQuestionsRepository } from '../../../../../test/repositories/in-memory-questions-repository'
+import { ChoseQuestionBestAnswerUseCase } from './chose-question-best-answer'
+import { makeQuestion } from '../../../../../test/factories/make-question'
+import { makeAnswer } from '../../../../../test/factories/make-answer'
+import { UniqueEntityID } from '@/core/entities/unique-entity-id'
+
+let inMemoryAnswersRepository: InMemoryAnswersRepository
+let inMemoryQuestionsRepository: InMemoryQuestionsRepository
+let sut: ChoseQuestionBestAnswerUseCase
+
+describe('Choose question best answer', () => {
+  beforeEach(() => {
+    inMemoryAnswersRepository = new InMemoryAnswersRepository()
+    inMemoryQuestionsRepository = new InMemoryQuestionsRepository()
+    sut = new ChoseQuestionBestAnswerUseCase(
+      inMemoryQuestionsRepository,
+      inMemoryAnswersRepository,
+    )
+  })
+
+  it('should be able to choose the question best answer', async () => {
+    const question = await makeQuestion()
+    const answer = await makeAnswer({
+      questionId: question.id,
+    })
+
+    await inMemoryQuestionsRepository.create(question)
+    await inMemoryAnswersRepository.create(answer)
+
+    await sut.execute({
+      answerId: answer.id.toString(),
+      authorId: question.authorId.toString(),
+    })
+
+    expect(inMemoryQuestionsRepository.items[0].bestAnswerId).toEqual(answer.id)
+  })
+
+  it('not should be able to choose the question best answer from another author', async () => {
+    const question = await makeQuestion({
+      authorId: new UniqueEntityID('author-1'),
+    })
+    const answer = await makeAnswer({
+      questionId: question.id,
+    })
+
+    await inMemoryQuestionsRepository.create(question)
+    await inMemoryAnswersRepository.create(answer)
+
+    expect(() => {
+      return sut.execute({
+        answerId: answer.id.toString(),
+        authorId: 'author-2',
+      })
+    }).rejects.toBeInstanceOf(Error)
+  })
+})
