@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest"
   },
@@ -14,6 +15,7 @@
     "@rocketseat/eslint-config": "^2.2.2",
     "@types/node": "^25.5.2",
     "eslint": "^8.57.1",
+    "eslint-plugin-vitest-globals": "^1.6.1",
     "typescript": "^6.0.2",
     "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^3.2.4"

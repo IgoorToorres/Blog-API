@@ -8,7 +8,7 @@ interface AnswerQuestionUseCaseRequest {
   content: string
 }
 
-interface AnswerQuestionUseCaseReponse{
+interface AnswerQuestionUseCaseReponse {
   answer: Answer
 }
 
@@ -29,7 +29,7 @@ export class AnswerQuestionUseCase {
     await this.answerRepository.create(answer)
 
     return {
-      answer
+      answer,
     }
   }
 }

@@ -1,7 +1,7 @@
 {
     "extends": [
         "@rocketseat/eslint-config/node",
-        "plugin:vitest-globals/recomended"
+        "plugin:vitest-globals/recommended"
     ],
     "rules": {
         "camelcase": "off",
