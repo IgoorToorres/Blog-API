@@ -36,12 +36,12 @@ describe('Fetch question comments', () => {
       }),
     )
 
-    const { questionComments } = await sut.execute({
+    const result = await sut.execute({
       page: 1,
       questionId: 'question-1',
     })
 
-    expect(questionComments).toEqual([
+    expect(result.value?.questionComments).toEqual([
       expect.objectContaining({ createdAt: new Date(2026, 0, 22) }),
       expect.objectContaining({ createdAt: new Date(2026, 0, 20) }),
       expect.objectContaining({ createdAt: new Date(2026, 0, 18) }),
@@ -57,11 +57,11 @@ describe('Fetch question comments', () => {
       )
     }
 
-    const { questionComments } = await sut.execute({
+    const result = await sut.execute({
       page: 2,
       questionId: 'question-1',
     })
 
-    expect(questionComments).toHaveLength(2)
+    expect(result.value?.questionComments).toHaveLength(2)
   })
 })

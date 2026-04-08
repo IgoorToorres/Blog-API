@@ -35,12 +35,12 @@ describe('Fetch recent answers', () => {
       }),
     )
 
-    const { answers } = await sut.execute({
+    const result = await sut.execute({
       page: 1,
       questionId: 'question-1',
     })
 
-    expect(answers).toEqual([
+    expect(result.value?.answers).toEqual([
       expect.objectContaining({ createdAt: new Date(2026, 0, 22) }),
       expect.objectContaining({ createdAt: new Date(2026, 0, 20) }),
       expect.objectContaining({ createdAt: new Date(2026, 0, 18) }),
@@ -54,11 +54,11 @@ describe('Fetch recent answers', () => {
       )
     }
 
-    const { answers } = await sut.execute({
+    const result = await sut.execute({
       page: 2,
       questionId: 'question-1',
     })
 
-    expect(answers).toHaveLength(2)
+    expect(result.value?.answers).toHaveLength(2)
   })
 })
