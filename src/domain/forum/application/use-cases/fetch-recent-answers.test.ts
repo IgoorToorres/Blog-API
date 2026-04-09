@@ -3,13 +3,18 @@ import { InMemoryAnswersRepository } from '@/../test/repositories/in-memory-answ
 import { makeAnswer } from '../../../../../test/factories/make-answer'
 import { FetchRecentAnswersUseCase } from './fetch-recent-answers'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
+import { InMemoryAnswerAttachmentsRepository } from '../../../../../test/repositories/in-memory-answer-attachments-repository copy'
 
 let inMemoryAnswersRepository: InMemoryAnswersRepository
 let sut: FetchRecentAnswersUseCase
 
 describe('Fetch recent answers', () => {
   beforeEach(() => {
-    inMemoryAnswersRepository = new InMemoryAnswersRepository()
+    const inMemoryAnswerAttachmentsRepository =
+      new InMemoryAnswerAttachmentsRepository()
+    inMemoryAnswersRepository = new InMemoryAnswersRepository(
+      inMemoryAnswerAttachmentsRepository,
+    )
     sut = new FetchRecentAnswersUseCase(inMemoryAnswersRepository)
   })
 
