@@ -4,8 +4,8 @@ import { makeAnswer } from '@/../test/factories/make-answer'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { EditAnswerUseCase } from './edit-answer'
 import { NotAllowedError } from '@/core/errors/errors/not-allowed-error'
-import { InMemoryAnswerAttachmentsRepository } from '../../../../../test/repositories/in-memory-answer-attachments-repository copy'
-import { makeAnswerAttachment } from '../../../../../test/factories/make-answer-attachments copy'
+import { InMemoryAnswerAttachmentsRepository } from '@/../test/repositories/in-memory-answer-attachments-repository copy'
+import { makeAnswerAttachment } from '@/../test/factories/make-answer-attachments copy'
 
 let inMemoryAnswersRepository: InMemoryAnswersRepository
 let inMemoryAnswerAttachmentsRepository: InMemoryAnswerAttachmentsRepository

@@ -1,9 +1,9 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { InMemoryAnswersRepository } from '@/../test/repositories/in-memory-answers-repository'
-import { makeAnswer } from '../../../../../test/factories/make-answer'
+import { makeAnswer } from '@/../test/factories/make-answer'
 import { FetchRecentAnswersUseCase } from './fetch-recent-answers'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
-import { InMemoryAnswerAttachmentsRepository } from '../../../../../test/repositories/in-memory-answer-attachments-repository copy'
+import { InMemoryAnswerAttachmentsRepository } from '@/../test/repositories/in-memory-answer-attachments-repository copy'
 
 let inMemoryAnswersRepository: InMemoryAnswersRepository
 let sut: FetchRecentAnswersUseCase

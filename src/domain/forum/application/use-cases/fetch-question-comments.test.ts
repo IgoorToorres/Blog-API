@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
-import { InMemoryQuestionCommentsRepository } from '../../../../../test/repositories/in-memory-question-comments-repository'
+import { InMemoryQuestionCommentsRepository } from '@/../test/repositories/in-memory-question-comments-repository'
 import { FetchQuestionCommentsUseCase } from './fetch-question-comments'
-import { makeQuestionComment } from '../../../../../test/factories/make-question-comment'
+import { makeQuestionComment } from '@/../test/factories/make-question-comment'
 
 let inMemoryQuestionCommentsRepository: InMemoryQuestionCommentsRepository
 let sut: FetchQuestionCommentsUseCase

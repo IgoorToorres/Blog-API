@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { AnswerQuestionUseCase } from './answer-question'
-import { InMemoryAnswersRepository } from '../../../../../test/repositories/in-memory-answers-repository'
+import { InMemoryAnswersRepository } from '@/../test/repositories/in-memory-answers-repository'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
-import { InMemoryAnswerAttachmentsRepository } from '../../../../../test/repositories/in-memory-answer-attachments-repository copy'
+import { InMemoryAnswerAttachmentsRepository } from '@/../test/repositories/in-memory-answer-attachments-repository copy'
 
 let inMemoryAnswersRepository: InMemoryAnswersRepository
 let inMemoryAnswerAttachmentsRepository: InMemoryAnswerAttachmentsRepository
